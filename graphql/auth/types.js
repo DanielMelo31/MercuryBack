@@ -19,7 +19,7 @@ const typesAuthentication = gql`
 
 		login(correo: String!, password: String!): Token!
 
-		validateToken: Token
+		refreshToken: Token
 	}
 `;
 

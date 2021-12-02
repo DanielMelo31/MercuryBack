@@ -47,8 +47,24 @@ const resolverAuthentication = {
 			}
 		},
 
-		validateToken: async (parent, args, context) => {
+		refreshToken: async (parent, args, context) => {
 			console.log(context);
+			if (!context.userData) {
+				return {
+					error: 'Invalid Token',
+				};
+			} else {
+				return {
+					token: generateToken({
+						_id: context._id,
+						nombre: context.nombre,
+						apellido: context.apellido,
+						identificacion: context.identificacion,
+						correo: context.correo,
+						rol: context.rol,
+					}),
+				};
+			}
 		},
 	},
 };
